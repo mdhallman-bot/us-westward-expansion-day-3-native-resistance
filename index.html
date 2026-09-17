@@ -270,6 +270,10 @@
     <div class="source-text" id="source-a">
       <strong>NEW YORK HERALD</strong>, front page, September 2, 1876:<br><br>
       "GENERAL CUSTER KILLED... THE ENTIRE DETACHMENT UNDER HIS COMMAND SLAUGHTERED..."
+      <br><br>
+      Coverage across the country followed the same pattern in the weeks after: Custer was mourned nationwide
+      as a fallen hero cut down by treachery, and the Lakota and Cheyenne fighters were repeatedly described as
+      a savage horde acting without provocation — regardless of the actual events at the encampment.
     </div>
   </div>
   <div>
@@ -278,8 +282,10 @@
       <strong>Two Moon</strong> (Northern Cheyenne war chief), recalling the battle in an 1898 interview with
       writer Hamlin Garland, published in <em>McClure's Magazine</em> — 22 years after the battle:<br><br>
       Two Moon described his people camped peacefully along the river, preparing for a feast, when Custer's
-      cavalry attacked without warning. He recalled the fighting as chaotic and desperate — his people defending
-      their camp, not attacking anyone.
+      cavalry attacked without warning. He recalled women and children running for the hills before the men
+      could even saddle their horses, and remembered the fighting itself as chaotic and desperate — his people
+      defending their camp, not attacking anyone. By the time it ended, he said, the ground was littered with
+      the dead and dying.
     </div>
   </div>
 </div>
@@ -314,6 +320,35 @@
 <p>"Source ___ is more reliable considering who wrote it and when, even though ___ also has value as evidence of ___."</p>
 </div></details>
 <div class="save-indicator" id="doc1-save-status"></div>
+
+<h3>What happened next</h3>
+<p style="font-family:Arial, sans-serif; font-size:0.9rem;">
+  Little Bighorn was a stunning Lakota and Cheyenne victory — and it backfired almost immediately. Rather than
+  making the U.S. Army back off, news of Custer's defeat triggered public outrage across the country and a
+  demand for revenge. Congress approved more troops and money, and within a year the Army had hunted down or
+  forced the surrender of most of the war leaders who had fought at the river that day.
+</p>
+<p style="font-family:Arial, sans-serif; font-size:0.9rem;">
+  Why might winning this battle so completely have made things worse, not better, for the Lakota and Cheyenne
+  in the long run?
+</p>
+<textarea id="doc1-escalation" class="big" placeholder="Winning this battle backfired because..."></textarea>
+<details class="frame-toggle"><summary>Need a sentence starter?</summary><div class="frame-box">
+<p>"Winning so completely backfired because it made the U.S. government ___."</p>
+<p>"A smaller or less total victory might have led to ___, but this outcome instead caused ___."</p>
+</div></details>
+
+<p style="font-family:Arial, sans-serif; font-size:0.9rem; margin-top:14px;">
+  Coverage like the Herald's — mourning Custer as a hero, branding the Lakota and Cheyenne "savage" — is what
+  most Americans actually read about this battle. How do you think that kind of coverage shaped public opinion,
+  and what people believed should happen next?
+</p>
+<textarea id="doc1-publicopinion" class="big" placeholder="Coverage like this probably shaped public opinion by..."></textarea>
+<details class="frame-toggle"><summary>Need a sentence starter?</summary><div class="frame-box">
+<p>"This kind of coverage likely made the public think ___, which made ___ seem acceptable."</p>
+<p>"If most Americans only read accounts like the Herald's, they probably believed ___, even though ___."</p>
+</div></details>
+<div class="save-indicator" id="doc1-escalation-save-status"></div>
 
 <!-- ============ CLOSE READ: CHIEF JOSEPH ============ -->
 <h2 id="sec-joseph">Close Read: "I Will Fight No More Forever" — October 5, 1877</h2>
@@ -935,10 +970,10 @@ function restoreVocabQuiz(saved) {
 }
 
 const CLAIMS = [
-  { text: '"The entire detachment under his command slaughtered."', answer: 'A' },
-  { text: 'The camp was preparing for a feast when soldiers attacked without warning.', answer: 'B' },
-  { text: 'Recalled the fighting as chaotic and desperate — a defense of the camp, not an attack on anyone.', answer: 'B' },
-  { text: 'Published on a newspaper front page within days of the battle, based on early, incomplete reports.', answer: 'A' }
+  { text: 'Custer was mourned nationwide as a fallen hero cut down by treachery.', answer: 'A' },
+  { text: 'Lakota and Cheyenne fighters were described as a savage horde acting without provocation.', answer: 'A' },
+  { text: 'Women and children ran for the hills before the men could even saddle their horses.', answer: 'B' },
+  { text: 'By the time the fighting ended, the ground was littered with the dead and dying.', answer: 'B' }
 ];
 
 const LIKERT_OPTIONS = ['Strongly Agree', 'Agree', 'Disagree', 'Strongly Disagree'];
@@ -1168,7 +1203,7 @@ async function checkSynthesis() {
 
 let saveTimer = null;
 function scheduleAutoSave() { clearTimeout(saveTimer); saveTimer = setTimeout(saveState, 4000); }
-['do-now', 'four-corners', 'doc1-analysis', 'joseph-phrase', 'joseph-message', 'joseph-tone', 'joseph-analysis',
+['do-now', 'four-corners', 'doc1-analysis', 'doc1-escalation', 'doc1-publicopinion', 'joseph-phrase', 'joseph-message', 'joseph-tone', 'joseph-analysis',
  'land-practical', 'land-ethical', 'cartoon-analysis', 'standingbear-q1', 'standingbear-q2', 'torlino-diary',
  'carlisle-analysis', 'video-summary', 'policy-justification', 'woundedknee-analysis',
  'warfare-ethics', 'synthesis-answer', 'exit-ticket'].forEach(id => {
@@ -1201,6 +1236,8 @@ function collectState() {
     vocabHeard: getHeardVocab(),
     claimGuesses: getClaimGuesses(),
     doc1Analysis: document.getElementById('doc1-analysis').value,
+    doc1Escalation: document.getElementById('doc1-escalation').value,
+    doc1PublicOpinion: document.getElementById('doc1-publicopinion').value,
     josephPhrase: document.getElementById('joseph-phrase').value,
     josephMessage: document.getElementById('joseph-message').value,
     josephTone: document.getElementById('joseph-tone').value,
@@ -1234,6 +1271,8 @@ async function loadState() {
   document.getElementById('do-now').value = data.doNow || '';
   document.getElementById('four-corners').value = data.fourCorners || '';
   document.getElementById('doc1-analysis').value = data.doc1Analysis || '';
+  document.getElementById('doc1-escalation').value = data.doc1Escalation || '';
+  document.getElementById('doc1-publicopinion').value = data.doc1PublicOpinion || '';
   document.getElementById('joseph-phrase').value = data.josephPhrase || '';
   document.getElementById('joseph-message').value = data.josephMessage || '';
   document.getElementById('joseph-tone').value = data.josephTone || '';
@@ -1283,7 +1322,7 @@ async function submitWork() {
   if (!data.complete && data.checklist) {
     checklistHtml = '<ul>';
     if (!data.checklist.hasDoNow) checklistHtml += '<li>Add your Do Now prediction.</li>';
-    if (!data.checklist.hasDoc1) checklistHtml += '<li>Finish your Document 1 analysis.</li>';
+    if (!data.checklist.hasDoc1) checklistHtml += '<li>Finish your Document 1 analysis (including what happened next and public opinion).</li>';
     if (!data.checklist.hasJoseph) checklistHtml += '<li>Finish your Chief Joseph reliability answer.</li>';
     if (!data.checklist.hasLand) checklistHtml += '<li>Answer both Land/Dawes Act questions.</li>';
     if (!data.checklist.hasCarlisle) checklistHtml += '<li>Finish your Carlisle reflection.</li>';
@@ -1317,6 +1356,8 @@ function downloadWork() {
 
     <h2>Document 1: Little Bighorn analysis</h2>
     <div class="p-block">${esc(val('doc1-analysis')) || '(not yet written)'}</div>
+    <div class="p-block">What happened next: ${esc(val('doc1-escalation')) || '(not yet written)'}</div>
+    <div class="p-block">Public opinion: ${esc(val('doc1-publicopinion')) || '(not yet written)'}</div>
 
     <h2>Chief Joseph — close read &amp; source reliability</h2>
     <div class="p-block">Phrase: ${esc(val('joseph-phrase'))}</div>
